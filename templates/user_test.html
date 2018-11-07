@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ test['name'] }}</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/user_test.js') }}"></script>
+</head>
+<body>
+        <h3>{{ student['name'] }}</h3><br>
+        <h3><span id="usn">{{ student['usn'] }}</span></h3><br>
+        <h3>{{ student['email'] }}</h3><br>
+        <h1>{{ test['name'] }}</h1>
+        <h3>Time left <span id="time">{{ test['duration'] }}</span></h3>
+        <h2>Total questions = <span class="noq">{{ test['questions']|length }}</span></h2>
+        <ol>
+        {% for question in test['questions'] %}
+                {% set i = loop.index %}
+                <li id="q{{ i }}">
+                    <span class="question">{{ question['question'] }}</span><br>
+
+                        {% for option in question['options'] %}
+                            <input type="radio" class="opt" name="qo{{ i }}" id="q{{ i }}o{{ loop.index }}" value="{{ option }}"/>{{ option }}
+                        {% endfor %}
+                </li>
+            {% endfor %}
+        </ol>
+        <button type="submit" onclick="time_expired()" name="send_res">Submit</button>
+</body>
+</html>

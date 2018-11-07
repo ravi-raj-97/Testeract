@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+    <h1>{{ test['name'] }}</h1>>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>USN</td>
+                <td>Email</td>
+                <td>Score</td>
+            </tr>
+        </thead>
+        {% for student in test['student_list'] %}
+            <tr>
+                <td>{{ student['name'] }}</td>
+                <td>{{ student['usn'] }}</td>
+                <td>{{ student['email'] }}</td>
+                <td>{{ student['score'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

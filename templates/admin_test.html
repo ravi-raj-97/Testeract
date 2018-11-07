@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ test['name'] }}</title>
+        <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/admin_test.js') }}"></script>
+    </head>
+    <body>
+        <h1>{{ test['name'] }}</h1>
+        <h3>Duration <span id="time">{{ test['duration'] }}</span></h3>
+        <ol>
+            {% for question in test['questions'] %}
+                {% set i = loop.index %}
+                <li id="{{ i }}">
+                    <span class="question">{{ question['question'] }}</span><br>
+                    Ans=<span class="answer">{{ test['ans_string'][i-1] }}</span>
+                    <button class="edit_question">Edit</button>
+                    <button class="delete_question">Delete</button>
+                    <ol>
+                        {% for option in question['options'] %}
+                            <li>{{ option }}</li>
+                        {% endfor %}
+                    </ol>
+                </li>
+            {% endfor %}
+        </ol>
+        <form id="new_q" method="post">
+            Question{{ form.question }}<br>
+            Option 1{{ form.option1 }}<br>
+            Option 2{{ form.option2 }}<br>
+            Option 3{{ form.option3 }}<br>
+            Option 4{{ form.option4 }}<br>
+            Answer {{ form.answer }}<br>
+            <button type="submit">Add</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Home</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin_home.js') }}"></script>
+</head>
+<body>
+        <table>
+            {% for test in tests %}
+                <tr>
+                    <td><span class="test_name">{{ test['name'] }}</span> <button class="edit_name">edit</button></td>
+                    <td><span class="duration">{{ test['duration'] }}</span> Mins <button href="" class="edit_dur">edit</button></td>
+                    <td>
+                        <span class="active_status">{{ test['status'] }}</span>
+                        <button class="toggle">Enable/Disable</button>
+                    </td>
+                    <td><a class="test_url" href="/admin/{{ test['url'] }}">Edit Questions</a></td>
+                    <td><a class="test_res" href = "/admin/{{ test['url'] }}/result">Check results</a> </td>
+                    <td><button class="del_test">Delete Test</button></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>Test Name</td>
+                <td><input size="10" id="new_name" type="text" value="" /></td>
+            </tr>
+            <tr>
+                <td>Test Duration</td>
+                <td><input size="10" id="dur" type="text" value=""/></td>
+            </tr>
+            <tr>
+                <td><button class="add_new" type="submit">Add Test</button></td>
+            </tr>
+        </table>
+
+</body>
+</html>

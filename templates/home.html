@@ -2,17 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"> 
     <title>Testeract Home</title>
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
 </head>
 <body>
-    <a href="adminlogin"><button>Go To Login</button></a>
-    <br>
-    {% for test in tests %}
-        {% if test['status'] == 'enabled' %}
-            <button onclick="student_login({{ "\"" + test['url']+"\"" }})">{{ test['name'] }}</button>
-        {% endif %}
-    {% endfor %}
+    <div class="container">
+        <div class="black-bg left-container">
+            <h1 class="logo-left">Test</h1>
+            <div class="left-inner-container">
+                <a href="adminlogin"><button class="btn btn-ad">Admin only</button></a>
+                <p class="p-left p-big"> Welcome to the official test taking portal for online tests of colleges.</p>
+            </div>
+        </div>
+        <div class="white-bg right-container">
+            <h1 class="logo-right">eract</h1>
+            <div class="right-inner-container">
+                <p class="p-right p-big">Find the available tests here.</p>
+                {% for test in tests %}
+                    {% if test['status'] == 'enabled' %}
+                        <button class="btn btn-test" onclick="student_login({{ "\"" + test['url']+"\"" }})">{{ test['name'] }}</button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

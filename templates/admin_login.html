@@ -2,13 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"> 
     <title>Admin Login</title>
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
 </head>
 <body>
-    Login<input id="login" type = text><br>
-    Password<input id="pass" type = password>
-    <button type = submit onclick="admin_login()">Login</button>
+    <div class="container">
+        <div class="black-bg left-container">
+            <h1 class="logo-left">Test</h1>
+            <div class="left-inner-container">
+                <a href="home"><button class="btn btn-ad">Go Back</button></a>
+                <p class="p-left p-big"> Please log in to proceed</p>
+            </div>
+        </div>
+        <div class="white-bg right-container">
+            <h1 class="logo-right">eract</h1>
+            <div class="right-inner-container">
+                <p class="p-right p-small">Login:      <input id="login" type = text></p>
+                <p class="p-right p-small">Password:<input id="pass" type = password></p>
+                <p class="p-right"><button class="btn btn-login" type = submit onclick="admin_login()">Login</button></p>
+        </div>
+    </div>
 </body>
 </html>

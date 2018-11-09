@@ -65,9 +65,9 @@ $(document).on('click','.change_dur',function () {
 });
 
 $(document).on('click' ,'.toggle', function () {
-    var status = $(this).siblings().text();
+    var status = $(this).text().toLowerCase() + 'd';
     var test_url = $(this).parents("tr").find(".test_url").attr('href').split('/')[2];
-
+	console.log(status);
     if (status === 'enabled')
         status = 'disabled';
     else

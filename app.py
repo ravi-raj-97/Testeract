@@ -94,6 +94,7 @@ def admin():
         val = d['value']
         test_obj = mongo.db.tests.find_one({'url': test_url})
         test_obj[key] = val
+	print(key, val)
         mongo.db.tests.replace_one({'url': test_url}, test_obj)
         return 'ok'
 

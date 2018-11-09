@@ -202,6 +202,24 @@ background-color:#fff;
 color: #ff0000;
 }
 
+.btn-table4 {
+	background: #ffffff;
+	color: #000000;
+	text-align: center;
+	height: 50px;
+	width: 90px;
+    transition: .2s ease;
+	font-size: 10px;
+	overflow: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.btn-table4:hover
+{
+background-color:#000;
+color: #fff;
+}
 
 p
 {
@@ -227,4 +245,18 @@ p
 .p-bottom
 {
 	border-bottom: 20px;
+}
+
+td
+{
+	padding: 10px;
+	text-align: justify-all;
+}
+.td-small
+{
+	font-size: 20px;
+}
+.td-big
+{
+	font-size: 30px;
 }

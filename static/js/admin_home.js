@@ -19,12 +19,12 @@ $(document).on('click','.add_new',function () {
 $(document).on('click','.edit_name',function () {
     var name = $(this).siblings("span.test_name").text();
     $(this).siblings("span").replaceWith('<input name="new_test_name" size="10" type="text" value="'+name+'" />');
-    $(this).replaceWith('<button class="change_name">done</button>');
+    $(this).replaceWith('<button class="change_name btn btn-table1">Done</button>');
 });
 
 $(document).on('click','.change_name',function () {
     var name = $(this).siblings().val();
-    var test_url = $(this).parents("tr").find(".test_url").attr('href').split('/')[2];
+    var test_url = $(this).parents("tr").find("input[name='test_url']").val();
     console.log(test_url)
 
     $.ajaxSetup({
@@ -43,12 +43,12 @@ $(document).on('click','.change_name',function () {
 $(document).on('click','.edit_dur',function () {
     var dur = $(this).siblings("span.duration").text();
     $(this).siblings("span").replaceWith('<input name="new_dur" size="5" type="text" value="'+dur+'" />');
-    $(this).replaceWith('<button class="change_dur">done</button>');
+    $(this).replaceWith('<button class="change_dur btn btn-table1">Done</button>');
 });
 
 $(document).on('click','.change_dur',function () {
     var dur = $(this).siblings().val();
-    var test_url = $(this).parents("tr").find(".test_url").attr('href').split('/')[2];
+    var test_url = $(this).parents("tr").find("input[name='test_url']").val();
     console.log(test_url)
 
     $.ajaxSetup({
@@ -66,9 +66,9 @@ $(document).on('click','.change_dur',function () {
 
 $(document).on('click' ,'.toggle', function () {
     var status = $(this).text().toLowerCase() + 'd';
-    var test_url = $(this).parents("tr").find(".test_url").attr('href').split('/')[2];
-	console.log(status);
-    if (status === 'enabled')
+    var test_url =$(this).parents("tr").find("input[name='test_url']").val();
+	console.log(test_url);
+    if (status === 'disabled')
         status = 'disabled';
     else
         status = 'enabled';
@@ -87,7 +87,7 @@ $(document).on('click' ,'.toggle', function () {
 });
 
 $(document).on('click' ,'.del_test', function () {
-    var test_url = $(this).parents("tr").find(".test_url").attr('href').split('/')[2];
+    var test_url = $(this).parents("tr").find("input[name='test_url']").val();
 
     console.log(status);
     $.ajaxSetup({

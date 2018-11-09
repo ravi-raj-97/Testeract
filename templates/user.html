@@ -2,16 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
     <title>Candidate details</title>
 </head>
 <body>
-            <form action = "{{ test }}" method="post" >
-                Name<input type="text" name="name" /><br>
-                USN<input type="text" name="usn" /><br>
-                Email<input type="email" name="email" /><br>
-                {{ form.csrf_token }}
-                <button type="submit">submit</button>
-            </form>
+	<div class="container">
+        <div class="black-bg left-container">
+            <h1 class="logo-left">Test</h1>
+            <div class="left-inner-container">
+                <a href="/"><button class="btn btn-ad">Home</button></a>
+                <p class="p-left p-big"> Please enter details to proceed</p>
+            </div>
+        </div>
+        <div class="white-bg right-container">
+            <h1 class="logo-right">eract</h1>
+            <div class="right-inner-container">
+	            <form action = "{{ test }}" method="post" >
+	               <p class="p-right p-small"> Name:<input type="text" name="name" /></p>
+	               <p class="p-right p-small"> USN:<input type="text" name="usn" /></p>
+	               <p class="p-right p-small"> E-mail:<input type="email" name="email" /></p>
+	                {{ form.csrf_token }}
+	                <button class="btn btn-login" type="submit">submit</button>
+	            </form>
+	        </div>
+	    </div>
+	</div>
 </body>
 </html>

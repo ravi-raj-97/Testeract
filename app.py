@@ -73,19 +73,14 @@ def admin():
             'name': d['name'],
             'status': 'disabled',
             'student_list': [],
-            'url': None,
+            'url': '',
             'questions': [],
             'ans_string': '',
-            'duration': d['duration'],
-            'test_no': 0,
+            'duration': d['duration']
         }
-        no_of_tests = mongo.db.tests.count_documents({})
-        if no_of_tests > 0:
-            new_test['test_no'] = no_of_tests + 1
-        new_test['url'] = 'test'+str(new_test['test_no'])
-        mongo.db.tests.insert_one(new_test)
-        url = '/admin/'+'test'+str(no_of_tests)
-        return url
+        _id = mongo.db.tests.insert(new_test)
+	mongo.db.tests.update({'_id': _id}, {'$set':{'url': str(_id)}})
+        return str(_id)
 
     elif request.method == 'PUT':
         d = request.get_json()

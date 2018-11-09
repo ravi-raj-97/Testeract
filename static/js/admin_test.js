@@ -18,7 +18,7 @@ $(document).on('click','.edit_question', function () {
     $(this).siblings("ol").children("li:nth-child(2)").replaceWith("<li><input class='new_b' value="+b+" /></li>");
     $(this).siblings("ol").children("li:nth-child(3)").replaceWith("<li><input class='new_c' value="+c+" /></li>");
     $(this).siblings("ol").children("li:nth-child(4)").replaceWith("<li><input class='new_d' value="+d+" /></li>");
-    $(this).replaceWith("<button class='submit_edit'>add</button>")
+    $(this).replaceWith("<button class='submit_edit btn btn-table4'>Add</button>")
 });
 
 $(document).on('click','.submit_edit', function () {

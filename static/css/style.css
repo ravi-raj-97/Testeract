@@ -238,6 +238,10 @@ p
 {
 	font-size: 20px;
 }
+.p-med
+{
+	font-size: 30px;
+}
 .p-big
 {
 	font-size: 40px;
@@ -245,6 +249,15 @@ p
 .p-bottom
 {
 	border-bottom: 20px;
+}
+
+.p-right-align
+{
+	text-align:right;
+}
+.p-left-align
+{
+	text-align:left;
 }
 
 td

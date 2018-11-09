@@ -2,27 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
     <title>Results</title>
 </head>
 <body>
-    <h1>{{ test['name'] }}</h1>>
-    <table>
-        <thead>
-            <tr>
-                <td>Name</td>
-                <td>USN</td>
-                <td>Email</td>
-                <td>Score</td>
-            </tr>
-        </thead>
-        {% for student in test['student_list'] %}
-            <tr>
-                <td>{{ student['name'] }}</td>
-                <td>{{ student['usn'] }}</td>
-                <td>{{ student['email'] }}</td>
-                <td>{{ student['score'] }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <div class="black-bg left-container">
+            <h1 class="logo-left">Test</h1>
+            <div class="left-inner-container">
+                <a href="/admin"><button class="btn btn-ad btn-space">Go Back</button></a>
+            </div>
+        </div>
+        <div class="white-bg right-container">
+            <h1 class="logo-right">eract</h1>
+            <div class="right-inner-container">
+                <h1>{{ test['name'] }}</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>USN</td>
+                            <td>Email</td>
+                            <td>Score</td>
+                        </tr>
+                    </thead>
+                    {% for student in test['student_list'] %}
+                        <tr>
+                            <td>{{ student['name'] }}</td>
+                            <td>{{ student['usn'] }}</td>
+                            <td>{{ student['email'] }}</td>
+                            <td>{{ student['score'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

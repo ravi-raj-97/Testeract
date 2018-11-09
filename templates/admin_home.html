@@ -35,6 +35,7 @@
                             <td><span class="test_name td-small">{{ test['name'] }}</span> <button class="edit_name btn btn-table1">edit</button></td>
                             <td><span class="duration td-small">{{ test['duration'] }}</span> Mins <button href="" class="edit_dur btn btn-table1">edit</button></td>
                             <td>
+                                <input type="hidden" name="test_url" value="{{ test['url'] }}" />
                                 <span class="active_status td-small">
                                 {% if test['status'] == 'enabled' %}Enabled{% endif %}
                                 {% if test['status'] == 'disabled' %}Disabled{% endif %}
@@ -46,9 +47,9 @@
                                     <button class="toggle btn-table2">ENABLE</button>
                                 {% endif %}
                             </td>
-                            <td><button class="test_url btn btn-table4" href="/admin/{{ test['url'] }}">Edit Questions</a></td>
-                            <td><button class="test_res btn btn-table4" href = "/admin/{{ test['url'] }}/result">Check results</a> </td>
-                            <td><button class="del_test btn btn-table4">Delete Test</button></td>
+                            <td><a href="/admin/{{ test['url'] }}""><button class="test_url btn btn-table4">Edit Questions</button></a></td>
+                            <td><a href="/admin/{{ test['url'] }}/result"><button class="test_res btn btn-table4">Check results</button></a></td>
+                            <td><button value="{{ test['url'] }}" class="del_test btn btn-table4">Delete Test</button></td>
                         </tr>
                     {% endfor %}
                 </table>

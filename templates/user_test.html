@@ -3,28 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ test['name'] }}</title>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/user_test.js') }}"></script>
 </head>
 <body>
-        <h3>{{ student['name'] }}</h3><br>
-        <h3><span id="usn">{{ student['usn'] }}</span></h3><br>
-        <h3>{{ student['email'] }}</h3><br>
-        <h1>{{ test['name'] }}</h1>
-        <h3>Time left <span id="time">{{ test['duration'] }}</span></h3>
-        <h2>Total questions = <span class="noq">{{ test['questions']|length }}</span></h2>
-        <ol>
-        {% for question in test['questions'] %}
-                {% set i = loop.index %}
-                <li id="q{{ i }}">
-                    <span class="question">{{ question['question'] }}</span><br>
+    <div class="container">
+        <div class="black-bg left-container">
+            <h1 class="logo-left">Test</h1>
+            <div class="left-inner-container">
+                <p class="p-left p-small">Total questions : <span class="noq">{{ test['questions']|length }}</span></p>
+                <p class="p-left p-small">Name: {{ student['name'] }}</p>
+                <p class="p-left p-small">USN: <span id="usn">{{ student['usn'] }}</span></p>
+                <p class="p-left p-small">Email: {{ student['email'] }}</p>
+                <p class="p-left p-small">Test Name: {{ test['name'] }}</p>
+                <button class="btn btn-ad" type="submit" onclick="time_expired()" name="send_res">Submit</button>
+            </div>
+        </div>
+        <div class="white-bg right-container">
+            <h1 class="logo-right">eract</h1>
+            <div class="right-inner-container">
+                <p class="p-right p-big p-right-align">Time left : <span id="time">{{ test['duration'] }}</span></p>
+                <ol class="p-left-align">
+                {% for question in test['questions'] %}
+                        {% set i = loop.index %}
+                        <li id="q{{ i }}">
+                            <span class="question p-small">{{ question['question'] }}</span><br>
 
-                        {% for option in question['options'] %}
-                            <input type="radio" class="opt" name="qo{{ i }}" id="q{{ i }}o{{ loop.index }}" value="{{ option }}"/>{{ option }}
-                        {% endfor %}
-                </li>
-            {% endfor %}
-        </ol>
-        <button type="submit" onclick="time_expired()" name="send_res">Submit</button>
+                                {% for option in question['options'] %}
+                                    <input type="radio" class="opt" name="qo{{ i }}" id="q{{ i }}o{{ loop.index }}" value="{{ option }}"/>{{ option }}
+                                    <br>
+                                {% endfor %}
+                        </li>
+                        <br>   
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

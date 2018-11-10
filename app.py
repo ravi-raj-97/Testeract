@@ -36,9 +36,11 @@ def home():
         test_list.append(test)
     return render_template('home.html', message="Enter login", tests=test_list)
 
+
 @app.route('/adminlogin')
 def adminlogin():
     return render_template('admin_login.html')
+
 
 @app.route('/login')
 def login():
@@ -79,7 +81,7 @@ def admin():
             'duration': d['duration']
         }
         _id = mongo.db.tests.insert(new_test)
-	mongo.db.tests.update({'_id': _id}, {'$set':{'url': str(_id)}})
+        mongo.db.tests.update({'_id': _id}, {'$set': {'url': str(_id)}})
         return str(_id)
 
     elif request.method == 'PUT':
@@ -89,7 +91,7 @@ def admin():
         val = d['value']
         test_obj = mongo.db.tests.find_one({'url': test_url})
         test_obj[key] = val
-	print(key, val)
+        print(key, val)
         mongo.db.tests.replace_one({'url': test_url}, test_obj)
         return 'ok'
 
@@ -186,15 +188,18 @@ def user(test):
             'score': 0
         }
         test_obj = mongo.db.tests.find_one({'url': test})
+        for s in test_obj['student_list']:
+            if student['usn'] == s['usn']:
+                return render_template('user.html', form=form, message='USN already exists')
         test_obj['student_list'].append(student)
         mongo.db.tests.replace_one({'url': test}, test_obj)
         return render_template('user_test.html', test=test_obj, student=student)
 
-    elif not form.validate_on_submit():
-        return render_template('user.html', form=form)
-
     elif request.method == 'GET':
-        return render_template('user.html', form=form, test=test)
+        return render_template('user.html', form=form, test=test, message='Enter Correct Details')
+
+    elif not form.validate_on_submit():
+        return render_template('user.html', form=form, message='Please enter proper values')
 
 
 if __name__ == '__main__':

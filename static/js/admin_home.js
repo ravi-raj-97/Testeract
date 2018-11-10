@@ -1,8 +1,15 @@
+window.onload = function(){
+    $('#new_name').val("");
+    $('#dur').val("");
+};
 $(document).on('click','.add_new',function () {
     var name = $('#new_name').val();
     var dur = $('#dur').val();
     console.log(name, dur)
-
+    if(!isNaN(dur)){
+        alert('Enter valid duration');
+        return;
+    }
     $.ajaxSetup({
         contentType: "application/json; charset=utf-8"
     });
@@ -25,7 +32,6 @@ $(document).on('click','.edit_name',function () {
 $(document).on('click','.change_name',function () {
     var name = $(this).siblings().val();
     var test_url = $(this).parents("tr").find("input[name='test_url']").val();
-    console.log(test_url)
 
     $.ajaxSetup({
         contentType: "application/json; charset=utf-8"
@@ -49,7 +55,6 @@ $(document).on('click','.edit_dur',function () {
 $(document).on('click','.change_dur',function () {
     var dur = $(this).siblings().val();
     var test_url = $(this).parents("tr").find("input[name='test_url']").val();
-    console.log(test_url)
 
     $.ajaxSetup({
         contentType: "application/json; charset=utf-8"

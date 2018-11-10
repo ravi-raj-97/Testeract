@@ -51,7 +51,7 @@ function time_expired() {
         url: '/user/' + window.location.href.split("/")[4],
         data: JSON.stringify({'ans_str':window.ans_str, 'usn':usn})
     }).done(function () {
-        $(location).attr('href', '/finished')
+        window.location.replace('/finished')
     })
 
 

@@ -42,6 +42,12 @@ def adminlogin():
     return render_template('admin_login.html')
 
 
+@app.route('/logout')
+def admin_logout():
+    session['logged_in'] = None
+    return redirect('/adminlogin')
+
+
 @app.route('/login')
 def login():
     headers = request.headers
@@ -51,7 +57,7 @@ def login():
         session['logged_in'] = True
         return 'success', 200
     else:
-        session['logged_in'] = False
+        session['logged_in'] = None
         abort(401)
 
 
@@ -61,7 +67,6 @@ def admin():
     tests = mongo.db.tests.find()
     for test in tests:
         test_list.append(test)
-
     if not session.get('logged_in'):
         return redirect(url_for('home'))
 
@@ -182,7 +187,7 @@ def user(test):
     if form.validate_on_submit():
         student = {
             'name': form.name.data,
-            'usn': form.usn.data,
+            'usn': form.usn.data.upper(),
             'email': form.email.data,
             'ans_string': '',
             'score': 0

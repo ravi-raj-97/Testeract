@@ -5,9 +5,9 @@ window.onload = function(){
 $(document).on('click','.add_new',function () {
     var name = $('#new_name').val();
     var dur = $('#dur').val();
-    console.log(name, dur)
-    if(!isNaN(dur)){
-        alert('Enter valid duration');
+    console.log(name, dur);
+    if(isNaN(dur) || name.size < 1){
+        alert('Enter a valid duration');
         return;
     }
     $.ajaxSetup({
